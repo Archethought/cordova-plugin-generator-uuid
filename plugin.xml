@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="com.archethought.cordovaplugin.generators.uuid" version="0.0.1">
+  
+  <engines>
+    <engine name="cordova" version=">=3.1.0" />
+  </engines>
+  
+  <name>Archethought UUID Generator</name>
+  <description>This is a UUID generator plugin for Cordova.</description>
+  <author>Archethought, LLC</author>
+  <keywords>cordova,generator,uuid</keywords>
+  <license>Apache 2.0</license>
+  
+  <js-module src="www/generator_uuid.js" name="generator_uuid">
+    <clobbers target="generator_uuid" />
+  </js-module>
+  
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="generator_uuid">
+        <param name="android-package" value="com.archethought.cordovaplugins.generators.uuid" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+    
+    <source-file src="src/android/uuid.java" target-dir="src/com/archethought/cordovaplugins/generators" />
+  </platform>
+  
+  <!--<platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="GeneratorUUID">
+        <param name="ios-package" value="CDVGeneratorUUID"/>
+      </feature>
+    </config-file>
+    <header-file src="src/ios/CDVGeneratorUUID.h" />
+    <source-file src="src/ios/CDVGeneratorUUID.m" />
+  </platform>-->
+</plugin>
+
