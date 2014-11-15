@@ -13,14 +13,17 @@ var exec = cordova.require('cordova/exec');
 * @example
 generator_uuid.randomUUID(
     function( uuid) {
-        console.log('Random UUID String: ' + uuid.string);
-        console.log('Random UUID Most Significant Bits: ' + uuid.mostSignificantBits);
-        console.log('Random UUID Least Significant Bits: ' + uuid.leastSignificantBits);
-        console.log('Random UUID Version Number: ' + uuid.version);
-        console.log('Random UUID Variant Number: ' + uuid.variant);
+        console.log( 'Random UUID String: ' + uuid.string);
+        console.log( 'Random UUID Most Significant Bits: ' + uuid.mostSignificantBits);
+        console.log( 'Random UUID Least Significant Bits: ' + uuid.leastSignificantBits);
+        console.log( 'Random UUID Version Number: ' + uuid.version);
+        console.log( 'Random UUID Variant Number: ' + uuid.variant);
+    },
+    function( error) {
+        console.log( 'ERROR: Failed to generate a UUID: ' + error);
     }
 );
 */
-exports.randomUUID = function( resultCallback) {
-    exec( resultCallback, null, 'generator_uuid', 'randomUUID', []);
+exports.randomUUID = function( resultCallback, errorCallback) {
+    exec( resultCallback, errorCallback, 'generator_uuid', 'randomUUID', []);
 };
