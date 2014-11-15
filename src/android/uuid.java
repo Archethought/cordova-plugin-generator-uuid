@@ -82,7 +82,7 @@ public class uuid extends CordovaPlugin {
             outputJSON.put( "leastSignificantBits", inputUUID.getLeastSignificantBits());
             outputJSON.put( "version", inputUUID.version());
             outputJSON.put( "variant", inputUUID.variant());
-        } catch {
+        } catch (JSONException e) {
             // If the puts fail, return an empty JSONObject
             outputJSON = new JSONObject();
         }
