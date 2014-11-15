@@ -56,8 +56,13 @@ public class uuid extends CordovaPlugin {
         UUID generatedUUID = UUID.randomUUID();
         // Build the JSONObject for return
         JSONObject generatedJSON = this.jsonify( generatedUUID);
-        // Return the JSONObject
-        callbackContext.success( generatedJSON);
+        // Return the JSONObject if the JSONObject is not empty, otherwise call the error callback.
+        // An empty JSONObject should never happen here.
+        if( generatedJSON.length() > 0) {
+            callbackContext.success( generatedJSON);
+        } else {
+            callbackContext.error();
+        }
         return;
     }
     
@@ -71,11 +76,16 @@ public class uuid extends CordovaPlugin {
         // Create a JSONObject
         JSONObject outputJSON = new JSONObject();
         // Copy the needed values into the JSONObject
-        outputJSON.put( "string", inputUUID.toString());
-        outputJSON.put( "mostSignificantBits", inputUUID.getMostSignificantBits());
-        outputJSON.put( "leastSignificantBits", inputUUID.getLeastSignificantBits());
-        outputJSON.put( "version", inputUUID.version());
-        outputJSON.put( "variant", inputUUID.variant());
+        try {
+            outputJSON.put( "string", inputUUID.toString());
+            outputJSON.put( "mostSignificantBits", inputUUID.getMostSignificantBits());
+            outputJSON.put( "leastSignificantBits", inputUUID.getLeastSignificantBits());
+            outputJSON.put( "version", inputUUID.version());
+            outputJSON.put( "variant", inputUUID.variant());
+        } catch {
+            // If the puts fail, return an empty JSONObject
+            outputJSON = new JSONObject();
+        }
         // Return the JSONObject
         return( outputJSON);
     }
