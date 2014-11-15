@@ -67,7 +67,7 @@ public class uuid extends CordovaPlugin {
      * jsonify function
      *   Return a JSONObject containing the UUID information
      ***/
-    private boolean jsonify( UUID inputUUID) {
+    private JSONObject jsonify( UUID inputUUID) {
         // Create a JSONObject
         JSONObject outputJSON = new JSONObject();
         // Copy the needed values into the JSONObject
