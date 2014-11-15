@@ -61,7 +61,7 @@ public class uuid extends CordovaPlugin {
         if( generatedJSON.length() > 0) {
             callbackContext.success( generatedJSON);
         } else {
-            callbackContext.error();
+            callbackContext.error( "java.util.UUID is broken!");
         }
         return;
     }
