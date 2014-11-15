@@ -35,7 +35,7 @@ public class uuid extends CordovaPlugin {
         // These if statements call the actual functions.  There must be one for each public function.
         // randomUUID function
         if( "randomUUID".equals( action)) {
-            this.pop( callbackContext);
+            this.randomUUID( callbackContext);
             return true;
         }
         
